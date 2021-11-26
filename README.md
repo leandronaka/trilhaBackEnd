@@ -22,6 +22,7 @@ Diretório criado para a Trilha Back End Java 2021.
 
 - [X] Desafio 1 - Git
 - [X] Desafio 2 - POO
+- [X] Desafio 3 - Controller
 
 ---
 
@@ -112,21 +113,25 @@ mas ela tem um método Trocar Canal que apenas a televisão tem.
 ## 3.2. Desafio 3
 <a name="Desafio-3"></a>
 
-O que é o protocolo de comunicação HTTP e como ele funciona?
+**O que é o protocolo de comunicação HTTP e como ele funciona?**
+
     HTTP é um protocolo de comunicação que comunica a URL do site para ver os conteúdos existentes.
     O HTTP funciona como um protocolo de requisição-resposta no modelo cliente-servidor. Sua principal
     aplicação é a transferência de servidor web e navegador.
 
-O que é REST, e qual é a sua relação com o protocolo HTTP?
+**O que é REST, e qual é a sua relação com o protocolo HTTP?**
+
     REST é uma arquitetura que define um conjunto de restrições que são utilizadas para criação de serviços web.
     O REST utiliza o HTTP para a transferência dos dados.
 
-O que é WEB API, e qual a sua relação com REST?
+**O que é WEB API, e qual a sua relação com REST?**
+
     É uma interface de programação de aplicações. É um conjunto de regras que permite que
     diferentes programas se comuniquem. Rest determina a estrutura da API.
 
 
- Liste todos os métodos de solicitações HTTP utilizados pelo padrão REST e suas respectivas finalidades
+**Liste todos os métodos de solicitações HTTP utilizados pelo padrão REST e suas respectivas finalidades**
+
     1.GET - Retorna uma informação
     2.POST - Criação
     3.PUT - Salvar
@@ -136,10 +141,12 @@ O que é WEB API, e qual a sua relação com REST?
     7.CONNECT - Converte requisição de conexão
     8.HEAD - Retorna o cabeçalho de uma resposta.
 
-O que é SWAGGER?
+**O que é SWAGGER?**
+
     É uma ferramenta de documentação da API. Uma forma mais fácil de visualizar a documentação, alem de fornecer
     a documentação baseado no código.
 
+---
 
 
 
