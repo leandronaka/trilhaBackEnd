@@ -1,0 +1,19 @@
+Com suas palavras defina o que é um sistema de controle de versão (VCS)?
+
+Sistemas de controle de versão é uma ferramenta de gerenciamento de versões de arquivos.
+Com o VCS é possível ter um maior controle das alterações dos arquivos.
+É possível identificar algum tipo de alteração como adição, exclusão ou modificação de código.
+
+Cite 5 vantagens em utilizar um VCS:
+
+    Histórico das alterações.
+    Identificar as alterações feitas, tanto nos arquivos como quem modificou.
+    Facilidade de trabalhar em equipe simultaneamente.
+    Reverter e desfazer mudanças no código fonte.
+    Disponibilidade para todos os desenvolvedores envolvidos.
+
+Cite 3 exemplos de VCS:
+
+    Subversion
+    Mercurial
+    GIT

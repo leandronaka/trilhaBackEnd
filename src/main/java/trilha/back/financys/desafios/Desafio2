@@ -1,0 +1,45 @@
+Com suas palavras defina o que é programação orientada a objetos (POO) e cite seus pilares?
+
+POO foi criada em 1970 com uma alternativa para a programação estruturada,
+A POO é um paradigma baseado em objetos, onde esses objetos podem interagir um com o outro.
+
+Pilares da POO:
+
+    Abstração
+    Encapsulamento
+    Herança
+    Polimorfismo
+
+Exemplifique e explique um cenário de Abstração;
+
+É a abstração da representação do mundo real para a cenário do sistema.
+Onde são criadas as classes do sistema. As entidades são as características e ações.
+Exemplos: Entidade Carro, suas características são: cor, tamanho, entre outras.
+Já as ações são: ligar, desligar, acelerar, para entre outras.
+
+Exemplifique e explique um cenário de Encapsulamento;
+
+Encapsulamento tem por função esconder ou encapsular uma ideia, escondendo os detalhes internos.
+No encapsulamento é utilizado os métodos getters e setters para acessar as classes privadas.
+Exemplo: Um sistema de vendas, caso de problema nos cadastros de funcionários, a manutenção será feita apenas nela,
+como são independentes não é necessário modificar as demais classes.
+
+Exemplifique e explique um cenário de Herança;
+
+Herança é a característica que o filho herda da mãe. Para usar a Herança é necessário usar a palavra reserva Extends.
+Exemplo: Classe Gerente herda todas as características da Classe Funcionário.
+
+Exemplifique e explique um cenário de Polimorfismo;
+
+Polimorfismo altera o funcionamento interno de um método herdado da classe Mãe.
+Herança e polimorfismo estão ligados. Exemplo: Televisão herda as características de Eletrodoméstico,
+mas ela tem um método Trocar Canal que apenas a televisão tem.
+
+Cite 5 vantagens da POO:
+
+    Reutilização de código;
+    Manutenção de código;
+    Maior eficiência no desenvolvimento
+    Maior facilidade em grandes projetos
+    Facilidade de leitura e entendimento
+
