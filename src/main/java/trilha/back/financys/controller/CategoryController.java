@@ -19,7 +19,7 @@ public class CategoryController {
     private CategoryRepository categoryRepository;
 
     @GetMapping
-    public ResponseEntity<List<Category>> readW(){
+    public ResponseEntity<List<Category>> read(){
         return ResponseEntity.ok(categoryRepository.findAll());
     }
 
