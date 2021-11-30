@@ -1,8 +1,16 @@
 package trilha.back.financys.entities;
 
-public class Entry {
+import javax.persistence.*;
+import java.io.Serializable;
 
-    private long id;
+@Entity
+@Table(name = "ENTRY")
+public class Entry implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String description;
     private String type;
@@ -14,7 +22,8 @@ public class Entry {
     public Entry() {
     }
 
-    public Entry(long id, String name, String description, String type, String amount, String date, boolean paid, long categoryId) {
+    public Entry(long id, String name, String description, String type, String amount,
+                 String date, boolean paid, long categoryId) {
         this.id = id;
         this.name = name;
         this.description = description;

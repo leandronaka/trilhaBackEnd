@@ -1,0 +1,26 @@
+O que é JDBC?
+    É um conjunto de classes e interfaces que se conecta atraves de um driver em um especifico banco de dados.
+Também é possivel executar comandos SQL.
+
+O que é  ORM, cite 3 exemplos?
+    É a maneira de conciliar o desenvolvimento orientado a objetos ao banco de dados relacional, transformando em
+objeto-relacional.
+Exemplos de ORM
+    1.Hibernate
+    2.EclipseLink
+    3.ActiveJPA
+
+O que é JPA e qual é a sua relação com ORM's?
+    JPA é uma coleção de classes e métodos que armazenam os objetos dentro dos banco de dados. O principal objetivo
+    é a economia de tempo, por não precisar desenvolver código para conexão com o banco de dados.
+    O ORM é o conceito e o JPA define um padrão de como irá funcionar dentro do código.
+
+O que é Spring Data?
+   É um framework responsável pela implementação dos repositórios. Facilita muito as operações CRUD.
+
+O que caracteriza um projeto "CRUD básico" ?
+    CRUD significa Create, Read, Update e Delete. São as quatro funções básicas que os sistemas usam para manipular
+    o banco de dados.
+
+
+

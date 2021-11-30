@@ -1,19 +1,26 @@
 package trilha.back.financys.entities;
 
-public class Category {
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "CATEGORY")
+public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private long id;
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String description;
+
+    public Category() {
+    }
 
     public Category(long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-    }
-
-    public Category() {
     }
 
     public long getId() {

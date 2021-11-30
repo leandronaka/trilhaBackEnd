@@ -1,33 +1,50 @@
 package trilha.back.financys.controller;
 
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import trilha.back.financys.entities.Category;
+import trilha.back.financys.repository.CategoryRepository;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
-@RequestMapping("/api")
-//@Api(value = "API REST")
+@RequestMapping("/categorias")
 public class CategoryController {
 
-    private List<Category> lista = new ArrayList<Category>();
-    private Integer posicaoCategory;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
-    @GetMapping("/categorias")
-//    @ApiOperation(value = "Retorna lista de categorias")
-    public ResponseEntity<List<Category>> read(){
-        return ResponseEntity.ok().body(lista);
+    @GetMapping
+    public ResponseEntity<List<Category>> readW(){
+        return ResponseEntity.ok(categoryRepository.findAll());
     }
 
-    @PostMapping("/categorias")
-//    @ApiOperation(value = "Retorna a posição em que foi inserido")
-    public ResponseEntity<String> create(@RequestBody Category category){
-        posicaoCategory = lista.size();
-        lista.add(category);
-        return new ResponseEntity<String>(posicaoCategory.toString(),HttpStatus.OK);
+    @GetMapping("/{id}")
+    public ResponseEntity<Category> finById(@PathVariable long id) {
+        return ResponseEntity.ok(categoryRepository.findById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<Category> create (@RequestBody Category category){
+        category.setId(ThreadLocalRandom.current().nextLong(0,10000));
+        return new ResponseEntity<>(categoryRepository.save(category), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        categoryRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Category> update(@PathVariable Long id, @RequestBody Category category){
+        Category categoryAux = categoryRepository.findById(id).get();
+        BeanUtils.copyProperties(category, categoryAux, "id");
+        return new ResponseEntity<>(categoryRepository.save(categoryAux), HttpStatus.OK);
     }
 }
 

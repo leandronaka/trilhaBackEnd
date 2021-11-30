@@ -1,35 +1,50 @@
 package trilha.back.financys.controller;
 
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import trilha.back.financys.entities.Entry;
+import trilha.back.financys.repository.EntryRepository;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
-@RequestMapping("/api")
-//@Api(value = "API REST")
+@RequestMapping("/lancamentos")
 public class EntryController {
 
-    private List<Entry> lista = new ArrayList<Entry>();
-    private Integer posicaoEntry;
+    @Autowired
+    private EntryRepository entryRepository;
 
-    @GetMapping("/lancamentos")
-//    @ApiOperation(value = "Retorna lista de Lançamentos")
+    @GetMapping
     public ResponseEntity<List<Entry>> read(){
-        Collections.sort(lista, Comparator.comparing(Entry::getDate));
-        return ResponseEntity.ok().body(lista);
+        return ResponseEntity.ok(entryRepository.findAll());
     }
-    @PostMapping("/lancamentos")
-//    @ApiOperation(value = "Retorna a posição em que foi inserido")
-    public ResponseEntity<String> create(@RequestBody Entry entry){
-        posicaoEntry = lista.size();
-        lista.add(entry);
-        return new ResponseEntity<String>(posicaoEntry.toString(),HttpStatus.OK);
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Entry> finById(@PathVariable long id) {
+        return ResponseEntity.ok(entryRepository.findById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<Entry> create (@RequestBody Entry entry){
+        entry.setId(ThreadLocalRandom.current().nextLong(0,10000));
+        return new ResponseEntity<>(entryRepository.save(entry), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        entryRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Entry> update(@PathVariable Long id, @RequestBody Entry entry){
+        Entry entryAux = entryRepository.findById(id).get();
+        BeanUtils.copyProperties(entry, entryAux, "id");
+        return new ResponseEntity<>(entryRepository.save(entryAux), HttpStatus.OK);
     }
 
 }
