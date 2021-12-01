@@ -9,6 +9,7 @@
     2. [Desafio 2](#Desafio-2)
     3. [Desafio 3](#Desafio-3)
     4. [Desafio 4](#Desafio-4)
+    5. [Desafio 5](#Desafio-5)
 ---
 
 ## 1. Descrição 
@@ -25,7 +26,7 @@ Diretório criado para a Trilha Back End Java 2021.
 - [X] Desafio 2 - POO
 - [X] Desafio 3 - Controller
 - [X] Desafio 4 - Repository
-- [ ] Desafio 5 - Service
+- [X] Desafio 5 - Service
 - [ ] Desafio 6 - DTO
 - [ ] Desafio 7 - Dados
 - [ ] Desafio 8 - Exception
@@ -124,14 +125,14 @@ Diretório criado para a Trilha Back End Java 2021.
     5. Facilidade de leitura e entendimento
 
 ---
+
 ## 3.3. Desafio 3
 <a name="Desafio-3"></a>
 
 **O que é o protocolo de comunicação HTTP e como ele funciona?**
 
     HTTP é um protocolo de comunicação que comunica a URL do site para ver os conteúdos existentes.
-    O HTTP funciona como um protocolo de requisição-resposta no modelo cliente-servidor. Sua principal
-    aplicação é a transferência de servidor web e navegador.
+    O HTTP funciona como um protocolo de requisição-resposta no modelo cliente-servidor. Sua principal aplicação é a transferência de servidor web e navegador.
 
 **O que é REST, e qual é a sua relação com o protocolo HTTP?**
 
@@ -160,6 +161,7 @@ Diretório criado para a Trilha Back End Java 2021.
     É uma ferramenta de documentação da API. Uma forma mais fácil de visualizar a documentação, alem de fornecer
     a documentação baseado no código.
 
+---
 
 ## 3.4. Desafio 4
 
@@ -196,8 +198,23 @@ O que caracteriza um projeto "CRUD básico" ?
     
 ---
 
+## 3.5. Desafio 5
 
+<a name="Desafio-5"></a>
 
+Defina com suas palavras qual é a responsabilidade das camadas vistas até agora,
+entity, controller, repository e service.
+
+    Entity - É a camada dos objetos ou entidades, essa camada não tem métodos que alteram o objeto,
+     apenas os getter, setters, toString, entre outros.
+
+    Controller - É a camada responsável por receber as requisições e enviar a resposta ao usuário.
+
+    Service - responsável pela regra de negócio, a lógica da aplicação.
+
+    Repository - Implementa a camada de acesso aos dados. São as ações de consultar, adicionar, excluir do banco de dados.
+
+---
 
 
 

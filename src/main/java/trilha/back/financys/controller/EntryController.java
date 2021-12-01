@@ -1,5 +1,6 @@
 package trilha.back.financys.controller;
 
+import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -7,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import trilha.back.financys.entities.Entry;
 import trilha.back.financys.repository.EntryRepository;
+import trilha.back.financys.services.EntryService;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -17,6 +19,9 @@ public class EntryController {
 
     @Autowired
     private EntryRepository entryRepository;
+
+    @Autowired
+    private EntryService entryService;
 
     @GetMapping
     public ResponseEntity<List<Entry>> read(){
@@ -30,14 +35,16 @@ public class EntryController {
 
     @PostMapping
     public ResponseEntity<Entry> create (@RequestBody Entry entry){
-        entry.setId(ThreadLocalRandom.current().nextLong(0,10000));
-        return new ResponseEntity<>(entryRepository.save(entry), HttpStatus.OK);
+        if (entryService.validateCategoryById(entry.getCategoryId()) == true) {
+            entry = entryService.createService(entry);
+            return ResponseEntity.ok().body(entry);
+        } else throw new ResourceNotFoundException("Id not exist");
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         entryRepository.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
