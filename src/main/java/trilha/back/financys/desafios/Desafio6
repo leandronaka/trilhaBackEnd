@@ -1,0 +1,5 @@
+O que significa DTO, e qual sua importância?
+
+    DTO significa Data object Transfer, é utilizado para transportar dados. A sua importância é agrupar os dados
+    e passar para a view apenas os dados necessários, por exemplo passar nome e email, "escondendo" a senha para que
+    os usuários não tenham acesso.

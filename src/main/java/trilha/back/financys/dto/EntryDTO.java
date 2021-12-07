@@ -1,16 +1,11 @@
-package trilha.back.financys.entities;
+package trilha.back.financys.dto;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
-@Table(name = "ENTRY")
-public class Entry implements Serializable {
+public class EntryDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
     private String description;
     private String type;
@@ -19,11 +14,11 @@ public class Entry implements Serializable {
     private boolean paid;
     private long categoryId;
 
-    public Entry() {
+    public EntryDTO(){
     }
 
-    public Entry(long id, String name, String description, String type,
-                 double amount, String date, boolean paid, long categoryId) {
+    public EntryDTO(Long id, String name, String description, String type, double amount,
+                    String date, boolean paid, Long categoryId){
         this.id = id;
         this.name = name;
         this.description = description;
@@ -34,11 +29,11 @@ public class Entry implements Serializable {
         this.categoryId = categoryId;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -97,21 +92,4 @@ public class Entry implements Serializable {
     public void setCategoryId(long categoryId) {
         this.categoryId = categoryId;
     }
-
-    @Override
-    public String toString() {
-        return "Entry{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", type='" + type + '\'' +
-                ", amount='" + amount + '\'' +
-                ", date='" + date + '\'' +
-                ", paid=" + paid +
-                ", categoryId='" + categoryId + '\'' +
-                '}';
-    }
-
 }
-
-

@@ -6,4 +6,5 @@ import trilha.back.financys.entities.Entry;
 public interface EntryRepository extends JpaRepository<Entry, Long> {
 
     Entry findById(long id);
+
 }
