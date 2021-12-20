@@ -1,24 +1,26 @@
 package trilha.back.financys.dto;
 
+import trilha.back.financys.entities.Category;
+import trilha.back.financys.enums.TypeEnum;
+
 import java.io.Serializable;
 
 public class EntryDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private long id;
     private String name;
     private String description;
-    private String type;
+    private TypeEnum type;
     private double amount;
     private String date;
     private boolean paid;
-    private long categoryId;
+    private Category categoryId;
 
-    public EntryDTO(){
+    public EntryDTO() {
     }
 
-    public EntryDTO(Long id, String name, String description, String type, double amount,
-                    String date, boolean paid, Long categoryId){
+    public EntryDTO(long id, String name, String description, TypeEnum type, double amount, String date, boolean paid, Category categoryId) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -29,11 +31,11 @@ public class EntryDTO implements Serializable {
         this.categoryId = categoryId;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -53,11 +55,11 @@ public class EntryDTO implements Serializable {
         this.description = description;
     }
 
-    public String getType() {
+    public TypeEnum getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(TypeEnum type) {
         this.type = type;
     }
 
@@ -85,11 +87,11 @@ public class EntryDTO implements Serializable {
         this.paid = paid;
     }
 
-    public long getCategoryId() {
+    public Category getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(long categoryId) {
+    public void setCategoryId(Category categoryId) {
         this.categoryId = categoryId;
     }
 }

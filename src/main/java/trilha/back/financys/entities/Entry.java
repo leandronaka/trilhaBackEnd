@@ -1,6 +1,13 @@
 package trilha.back.financys.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Length;
+import trilha.back.financys.enums.TypeEnum;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -11,19 +18,42 @@ public class Entry implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
+
+    @NotBlank(message = "O nome não pode ser nulo ou vazio!")
+    @Length(min = 3, max = 45, message = "O nome deverá ter no mínimo {min} e máximo {max} caracteres")
     private String name;
+
+    @NotBlank(message = "A descrição não pode ser nulo ou vazio!")
+    @Length(min = 15, max = 50, message = "A descrição deverá ter no mínimo {min} e máximo {max} caracteres")
     private String description;
-    private String type;
+
+    @NotNull(message = "O type não pode ser nulo ou vazio!")
+    @Enumerated(EnumType.STRING)
+    private TypeEnum type;
+
+    @NotNull(message = "A descrição não pode ser nulo ou vazio!")
+    @Min(value = 1, message="O valor deve ser maior que 0!")
     private double amount;
+
+    @NotBlank(message = "A data não pode ser nulo ou vazio!")
     private String date;
+
+    @NotNull(message = "Paid não pode ser nulo ou vazio!")
     private boolean paid;
-    private long categoryId;
+
+    @ManyToOne
+    @JoinColumn(name = "category_Id")
+    private Category categoryId;
+
+    public String getNameCategory(){
+        return this.categoryId.getName();
+    }
 
     public Entry() {
     }
 
-    public Entry(long id, String name, String description, String type,
-                 double amount, String date, boolean paid, long categoryId) {
+    public Entry(long id, String name, String description, TypeEnum type,
+                 double amount, String date, boolean paid, Category categoryId) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -58,12 +88,12 @@ public class Entry implements Serializable {
         this.description = description;
     }
 
-    public String getType() {
+    public TypeEnum getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(TypeEnum type) {
+            this.type = type;
     }
 
     public double getAmount() {
@@ -90,11 +120,11 @@ public class Entry implements Serializable {
         this.paid = paid;
     }
 
-    public long getCategoryId() {
+    public Category getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(long categoryId) {
+    public void setCategoryId(Category categoryId) {
         this.categoryId = categoryId;
     }
 
@@ -104,14 +134,13 @@ public class Entry implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", type='" + type + '\'' +
-                ", amount='" + amount + '\'' +
+                ", type=" + type +
+                ", amount=" + amount +
                 ", date='" + date + '\'' +
                 ", paid=" + paid +
-                ", categoryId='" + categoryId + '\'' +
+                ", categoryId=" + categoryId +
                 '}';
     }
-
 }
 
 

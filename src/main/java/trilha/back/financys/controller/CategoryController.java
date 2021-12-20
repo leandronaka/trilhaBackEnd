@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import trilha.back.financys.entities.Category;
 import trilha.back.financys.repository.CategoryRepository;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
@@ -24,12 +26,12 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Category> findById(@PathVariable long id) {
+    public ResponseEntity<Optional<Category>> findById(@PathVariable long id) {
         return ResponseEntity.ok(categoryRepository.findById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Category> create (@RequestBody Category category){
+    public ResponseEntity<Category> create (@RequestBody @Valid Category category){
         category.setId(ThreadLocalRandom.current().nextLong(0,10000));
         return new ResponseEntity<>(categoryRepository.save(category), HttpStatus.OK);
     }

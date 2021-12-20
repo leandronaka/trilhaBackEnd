@@ -1,7 +1,6 @@
 package trilha.back.financys.controller;
 
 import org.apache.velocity.exception.ResourceNotFoundException;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,22 +35,22 @@ public class EntryController {
 
     @PostMapping
     public ResponseEntity<Entry> create (@RequestBody Entry entry){
-        if (entryService.validateCategoryById(entry.getCategoryId()) == true) {
+        if (entryService.validateCategoryById(entry.getCategoryId().getId()) ==  true){
             entry = entryService.salvar(entry);
             return ResponseEntity.ok().body(entry);
         } else throw new ResourceNotFoundException("Categoria não encontrada!");
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
+    public ResponseEntity<Void> delete(@PathVariable long id){
         entryRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Entry> update(@PathVariable Long id, @RequestBody Entry entry){
-        if (entryService.validateCategoryById(entry.getCategoryId()) == true ){
-            Entry entryAux = entryRepository.findById(id).get();
+    public ResponseEntity<Entry> update(@PathVariable long id, @RequestBody Entry entry){
+        if (entryService.validateCategoryById(entry.getCategoryId().getId()) ==  true ){
+            Entry entryAux = entryRepository.findById(id);
             BeanUtils.copyProperties(entry, entryAux, "id");
             return new ResponseEntity<>(entryRepository.save(entryAux), HttpStatus.OK);
         } else throw new ResourceNotFoundException("Categoria não encontrada!");
@@ -60,5 +59,10 @@ public class EntryController {
     @GetMapping("/dto")
     public ResponseEntity<List<ChartDTO>> listDTO(){
         return ResponseEntity.ok(entryService.listByCategory());
+    }
+
+    @GetMapping("/stream")
+    public ResponseEntity<Object> listStream(){
+        return ResponseEntity.ok(entryService.returnListDTO());
     }
 }

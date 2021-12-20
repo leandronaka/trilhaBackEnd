@@ -1,7 +1,12 @@
 package trilha.back.financys.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "CATEGORY")
@@ -10,14 +15,25 @@ public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    private long id;
+
+    @NotBlank(message = "O nome não pode ser nulo ou vazio!")
+    @Length(min = 3, max = 15, message = "O nome deverá ter no mínimo {min} e máximo {max} caracteres")
     private String name;
+
+    @NotBlank(message = "A Descrição não pode ser nulo ou vazio!")
+    @Length(min = 15, max = 50, message = "A descrição deverá ter no mínimo {min} e máximo {max} caracteres")
     private String description;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_Id")
+    private List<Entry> entry;
 
     public Category() {
     }
 
-    public Category(long id, String name, String description) {
+    public Category(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -45,6 +61,14 @@ public class Category implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Entry> getEntry() {
+        return entry;
+    }
+
+    public void setEntry(List<Entry> entry) {
+        this.entry = entry;
     }
 
     @Override
