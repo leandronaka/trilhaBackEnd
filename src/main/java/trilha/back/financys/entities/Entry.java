@@ -24,7 +24,7 @@ public class Entry implements Serializable {
     private String name;
 
     @NotBlank(message = "A descrição não pode ser nulo ou vazio!")
-    @Length(min = 15, max = 50, message = "A descrição deverá ter no mínimo {min} e máximo {max} caracteres")
+    @Length(min = 15, max = 150, message = "A descrição deverá ter no mínimo {min} e máximo {max} caracteres")
     private String description;
 
     @NotNull(message = "O type não pode ser nulo ou vazio!")
@@ -32,7 +32,7 @@ public class Entry implements Serializable {
     private TypeEnum type;
 
     @NotNull(message = "A descrição não pode ser nulo ou vazio!")
-    @Min(value = 1, message="O valor deve ser maior que 0!")
+    @Min(value = 0, message="O valor deve ser maior que 0!")
     private double amount;
 
     @NotBlank(message = "A data não pode ser nulo ou vazio!")

@@ -65,4 +65,10 @@ public class EntryController {
     public ResponseEntity<Object> listStream(){
         return ResponseEntity.ok(entryService.returnListDTO());
     }
+
+    @GetMapping("/calcula/{x}/{y}")
+    public ResponseEntity<Integer> calculaMedia(@PathVariable Integer x, @PathVariable Integer y) {
+        return ResponseEntity.ok(entryService.calculaMedia(x, y));
+    }
+
 }

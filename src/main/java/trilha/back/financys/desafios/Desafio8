@@ -1,0 +1,36 @@
+O que são exceptions?
+
+    Exceções são situações anormais que podem ocorrer durante a execução de um sistema. Essas exceções
+    podem ser tratadas.
+
+Qual é o funcionamento do try, catch e finally?
+
+    O bloco Try-Catch-Finally é um recurso para tratar exceções.
+    O bloco Try contém o código que está sujeito a ocorrer algum tipo de erro. Já o bloco Catch, contém o
+    tratamento da exceção que eventualmente ocorra no bloco try. O bloco Finally representa o trecho de código
+    que será executado independente de ter ocorrido a exceção ou não.
+
+Qual a relação entre “try, catch e finally” e “throws”?
+
+    Try, catch e finally são um bloco de tratamento de exceção. Já o Throws declara que um método pode lançar
+    uma ou mais exceções.
+
+Para que serve a annotation @ExceptionHandler?
+
+    A anotação é usada para lidar com exceções em controllers. É possível criar uma resposta
+    ao erro totalmente personalizada.
+
+Para que serve o comando throw?
+
+    Throw manda a exceção ser lançada, mas não exige que seja tratada.
+
+Para que serve a annotation @ControllerAdvice?
+
+    Não é específico para o tratamento de exceções, também é usado para tratar propriedades,
+    validações ou vinculações de formatadores em nível global.
+
+Escreva sua própria conclusão sobre exceptions
+
+    Exceptions é uma forma de tratar a exceção de uma forma que seja de fácil entendimento para o usuário.
+
+

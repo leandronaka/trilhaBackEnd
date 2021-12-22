@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import trilha.back.financys.dto.ChartDTO;
 import trilha.back.financys.entities.Category;
 import trilha.back.financys.entities.Entry;
+import trilha.back.financys.exception.DivideByZeroException;
 import trilha.back.financys.repository.CategoryRepository;
 import trilha.back.financys.repository.EntryRepository;
 
@@ -62,19 +63,16 @@ public class EntryService {
 
     public List<ChartDTO> returnListDTO() {
         List<Entry> listEntry = entryRepository.findAll();
-        List<Category> listCategory = categoryRepository.findAll();
         List<ChartDTO> listDTO = new ArrayList<>();
-        ChartDTO chartDTO = new ChartDTO();
 
         listEntry.forEach(entry ->
-                listDTO.stream().filter(item -> item.getName().equals(entry.getName())).findAny()
+                listDTO.stream().filter(item -> item.getName().equals(entry.getNameCategory())).findAny()
                         .ifPresentOrElse(
                                 item -> {
-                                    item.setName(item.getName());
-                                    item.setAmount(item.getAmount() + item.getAmount());
+                                    item.setAmount(item.getAmount() + entry.getAmount());
                                 },
                                 () -> {
-                                    listDTO.add(new ChartDTO(entry.getName(), entry.getAmount()));
+                                    listDTO.add(new ChartDTO(entry.getNameCategory(), entry.getAmount()));
                                 }
                         ));
         return listDTO;
@@ -88,5 +86,13 @@ public class EntryService {
     private Entry mapToEntity(ChartDTO chartDTO) {
         Entry entry = modelMapper.map(chartDTO, Entry.class);
         return entry;
+    }
+
+    public Integer calculaMedia(Integer x, Integer y) {
+        try {
+            return (x / y);
+        } catch (ArithmeticException e) {
+            throw new DivideByZeroException("Não pode dividir por 0!");
+        }
     }
 }

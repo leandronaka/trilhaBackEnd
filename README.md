@@ -10,6 +10,8 @@
     3. [Desafio 3](#Desafio-3)
     4. [Desafio 4](#Desafio-4)
     5. [Desafio 5](#Desafio-5)
+    6. [Desafio 6](#Desafio-6)
+    7. [Desafio 8](#Desafio-8)
 ---
 
 ## 1. Descrição 
@@ -27,9 +29,9 @@ Diretório criado para a Trilha Back End Java 2021.
 - [X] Desafio 3 - Controller
 - [X] Desafio 4 - Repository
 - [X] Desafio 5 - Service
-- [ ] Desafio 6 - DTO
-- [ ] Desafio 7 - Dados
-- [ ] Desafio 8 - Exception
+- [X] Desafio 6 - DTO
+- [X] Desafio 7 - Dados
+- [X] Desafio 8 - Exception
 - [ ] Desafio 9 - Patterns
 - [ ] Desafio 10 - Spring
 - [ ] Desafio 11 - Libs
@@ -164,7 +166,6 @@ Diretório criado para a Trilha Back End Java 2021.
 ---
 
 ## 3.4. Desafio 4
-
 <a name="Desafio-4"></a>
 
 O que é JDBC?
@@ -199,7 +200,6 @@ O que caracteriza um projeto "CRUD básico" ?
 ---
 
 ## 3.5. Desafio 5
-
 <a name="Desafio-5"></a>
 
 Defina com suas palavras qual é a responsabilidade das camadas vistas até agora,
@@ -216,8 +216,53 @@ entity, controller, repository e service.
 
 ---
 
+## 3.6. Desafio 6
+<a name="Desafio-6"></a>
 
+O que significa DTO, e qual sua importância?
 
+    DTO significa Data object Transfer, é utilizado para transportar dados. A sua importância é agrupar os dados
+    e passar para a view apenas os dados necessários, por exemplo passar nome e email, "escondendo" a senha para que
+    os usuários não tenham acesso.
 
+---
 
+## 3.8. Desafio 8
+<a name="Desafio-8"></a>
 
+O que são exceptions?
+
+    Exceções são situações anormais que podem ocorrer durante a execução de um sistema. Essas exceções
+    podem ser tratadas.
+
+Qual é o funcionamento do try, catch e finally?
+
+    O bloco Try-Catch-Finally é um recurso para tratar exceções.
+    O bloco Try contém o código que está sujeito a ocorrer algum tipo de erro. Já o bloco Catch, contém o
+    tratamento da exceção que eventualmente ocorra no bloco try. O bloco Finally representa o trecho de código
+    que será executado independente de ter ocorrido a exceção ou não.
+
+Qual a relação entre “try, catch e finally” e “throws”?
+
+    Try, catch e finally são um bloco de tratamento de exceção. Já o Throws declara que um método pode lançar
+    uma ou mais exceções.
+
+Para que serve a annotation @ExceptionHandler?
+
+    A anotação é usada para lidar com exceções em controllers. É possível criar uma resposta
+    ao erro totalmente personalizada.
+
+Para que serve o comando throw?
+
+    Throw manda a exceção ser lançada, mas não exige que seja tratada.
+
+Para que serve a annotation @ControllerAdvice?
+
+    Não é específico para o tratamento de exceções, também é usado para tratar propriedades,
+    validações ou vinculações de formatadores em nível global.
+
+Escreva sua própria conclusão sobre exceptions
+
+    Exceptions é uma forma de tratar a exceção de uma forma que seja de fácil entendimento para o usuário. 
+
+---
