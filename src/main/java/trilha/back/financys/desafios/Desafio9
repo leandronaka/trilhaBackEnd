@@ -1,0 +1,45 @@
+O que é um padrão de projeto e por que nós os utilizamos?
+
+    Padrão de projeto é como plantas de uma construção, são soluções típicas para problemas comuns em projetos,
+    customizando para se adequar ao seu projeto. O padrão de projeto traz muitas vantagens, uma das principais
+    vantagens é o reuso das soluções propostas para determinado problema. Outro grande motivo da utilização é
+    a facilidade na hora da manutenção.
+
+Cite e explique com suas palavras:
+
+I. Um dos padrões de criação;
+
+    Abstract Factory - Fornece uma interface para criação de familias  de objetos relacionais ou dependentes
+    sem espeficar suas classes concretas.
+
+II. Um dos padrões estruturais;
+
+    Adapter - Converte a interface de uma classe por outra esperada pelo usuário.
+
+III. Um dos padrões comportamentais;
+
+    Template Method - Permite que subclasses redefinam certos passos de um algoritmo sem mudar a estruura dele.
+
+Explique o conceito de arquitetura de software e seu proposito
+
+    É o processo de converter características de software como flexibilidade, escalabilidade, viabilidade, reutilização
+    e segurança em uma solução estruturada que atende as necessidades técnicas e de negócios.
+
+Qual arquitetura estamos seguindo até o momento? Justifique sua resposta.
+
+    A arquitetura utilizada foi o MVC, onde separamos pelas camadas model, view e controller, cada uma com sua
+    responsabilidade especifica.
+
+O que significa a sigla SOLID?
+
+    Solid é os 5 princípios da POO que facilitam no desenvolvimento de softwares, tornando-os faceis de manter.
+    S - Single Responsability Principle - Principio da responsabilidade única.
+    O - Open - Closed Principle - Principio aberto e fechado.
+    L - Liskov Substitution Principle - Principio da substituição de Liskov.
+    I - interface Segregation Principle - Principio da segregação de interface.
+    D - Dependency Inversion Principle - Principio da inversão de dependencia.
+
+Quais princípios foram utilizados no projeto até o momento? Explique.
+
+    Usamos o Single Responsability Principle, onde definimos cada classe com sua responsabilidade. Outro principio
+    utilizado no projeto foi o Dependency Inversion Principle, nas classes repository e controller.

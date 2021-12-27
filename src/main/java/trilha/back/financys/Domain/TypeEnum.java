@@ -1,4 +1,4 @@
-package trilha.back.financys.enums;
+package trilha.back.financys.Domain;
 
 public enum TypeEnum {
 

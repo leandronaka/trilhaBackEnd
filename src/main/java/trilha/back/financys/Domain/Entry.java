@@ -1,8 +1,6 @@
-package trilha.back.financys.entities;
+package trilha.back.financys.Domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Length;
-import trilha.back.financys.enums.TypeEnum;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;

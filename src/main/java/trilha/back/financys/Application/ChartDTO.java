@@ -1,7 +1,4 @@
-package trilha.back.financys.dto;
-
-import trilha.back.financys.entities.Entry;
-import trilha.back.financys.enums.TypeEnum;
+package trilha.back.financys.Application;
 
 import java.io.Serializable;
 
