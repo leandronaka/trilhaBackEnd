@@ -4,9 +4,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import trilha.back.financys.entities.Category;
-import trilha.back.financys.entities.Entry;
-import trilha.back.financys.enums.TypeEnum;
+import trilha.back.financys.domain.Category;
+import trilha.back.financys.domain.Entry;
+import trilha.back.financys.domain.TypeEnum;
 
 @SpringBootApplication
 public class FinancysApplication {

@@ -1,14 +1,12 @@
-package trilha.back.financys.services;
+package trilha.back.financys.application;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import trilha.back.financys.dto.ChartDTO;
-import trilha.back.financys.entities.Category;
-import trilha.back.financys.entities.Entry;
-import trilha.back.financys.exception.DivideByZeroException;
-import trilha.back.financys.repository.CategoryRepository;
-import trilha.back.financys.repository.EntryRepository;
+import trilha.back.financys.domain.ChartDTO;
+import trilha.back.financys.domain.Category;
+import trilha.back.financys.domain.Entry;
+import trilha.back.financys.framework.DivideByZeroException;
 
 import java.util.ArrayList;
 import java.util.List;

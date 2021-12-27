@@ -1,4 +1,4 @@
-package trilha.back.financys.handler;
+package trilha.back.financys.framework;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import trilha.back.financys.exception.DivideByZeroException;
-import trilha.back.financys.exception.ExceptionResponse;
+import trilha.back.financys.framework.DivideByZeroException;
+import trilha.back.financys.domain.ExceptionResponse;
 
 import java.util.Date;
 

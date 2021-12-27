@@ -1,7 +1,7 @@
-package trilha.back.financys.repository;
+package trilha.back.financys.application;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import trilha.back.financys.entities.Category;
+import trilha.back.financys.domain.Category;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 

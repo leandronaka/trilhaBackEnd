@@ -1,4 +1,4 @@
-package trilha.back.financys.dto;
+package trilha.back.financys.domain;
 
 import java.io.Serializable;
 

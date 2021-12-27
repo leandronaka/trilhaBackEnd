@@ -1,4 +1,4 @@
-package trilha.back.financys.controller;
+package trilha.back.financys.framework;
 
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.BeanUtils;
@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import trilha.back.financys.dto.ChartDTO;
-import trilha.back.financys.entities.Entry;
-import trilha.back.financys.repository.EntryRepository;
-import trilha.back.financys.services.EntryService;
+import trilha.back.financys.domain.ChartDTO;
+import trilha.back.financys.domain.Entry;
+import trilha.back.financys.application.EntryRepository;
+import trilha.back.financys.application.EntryService;
 
 import java.util.List;
 

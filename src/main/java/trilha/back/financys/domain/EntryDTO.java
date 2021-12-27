@@ -1,7 +1,7 @@
-package trilha.back.financys.dto;
+package trilha.back.financys.domain;
 
-import trilha.back.financys.entities.Category;
-import trilha.back.financys.enums.TypeEnum;
+import trilha.back.financys.domain.Category;
+import trilha.back.financys.domain.TypeEnum;
 
 import java.io.Serializable;
 
