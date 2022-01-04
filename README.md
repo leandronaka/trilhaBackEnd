@@ -12,6 +12,8 @@
     5. [Desafio 5](#Desafio-5)
     6. [Desafio 6](#Desafio-6)
     7. [Desafio 8](#Desafio-8)
+    8. [Desafio 9](#Desafio-9)
+    9. [Desafio 10](#Desafio-10)
 ---
 
 ## 1. Descrição 
@@ -32,8 +34,8 @@ Diretório criado para a Trilha Back End Java 2021.
 - [X] Desafio 6 - DTO
 - [X] Desafio 7 - Dados
 - [X] Desafio 8 - Exception
-- [ ] Desafio 9 - Patterns
-- [ ] Desafio 10 - Spring
+- [X] Desafio 9 - Patterns
+- [X] Desafio 10 - Spring
 - [ ] Desafio 11 - Libs
 - [ ] Desafio 12 - Testes
 - [ ] Desafio 13 - Integration
@@ -266,3 +268,150 @@ Escreva sua própria conclusão sobre exceptions
     Exceptions é uma forma de tratar a exceção de uma forma que seja de fácil entendimento para o usuário. 
 
 ---
+
+## 3.9. Desafio 9
+<a name="Desafio-9"></a>
+O que é um padrão de projeto e por que nós os utilizamos?
+
+    Padrão de projeto é como plantas de uma construção, são soluções típicas para problemas comuns em projetos,
+    customizando para se adequar ao seu projeto. O padrão de projeto traz muitas vantagens, uma das principais
+    vantagens é o reuso das soluções propostas para determinado problema. Outro grande motivo da utilização é
+    a facilidade na hora da manutenção.
+
+Cite e explique com suas palavras:
+
+I. Um dos padrões de criação;
+
+    Abstract Factory - Fornece uma interface para criação de familias  de objetos relacionais ou dependentes
+    sem especificar suas classes concretas.
+
+II. Um dos padrões estruturais;
+
+    Adapter - Converte a interface de uma classe por outra esperada pelo usuário.
+
+III. Um dos padrões comportamentais;
+
+    Template Method - Permite que subclasses redefinam certos passos de um algoritmo sem mudar a estruura dele.
+
+Explique o conceito de arquitetura de software e seu proposito
+
+    É o processo de converter características de software como flexibilidade, escalabilidade, viabilidade, reutilização
+    e segurança em uma solução estruturada que atende as necessidades técnicas e de negócios.
+
+Qual arquitetura estamos seguindo até o momento? Justifique sua resposta.
+
+    A arquitetura utilizada foi o MVC, onde separamos pelas camadas model, view e controller, cada uma com sua
+    responsabilidade especifica.
+
+O que significa a sigla SOLID?
+
+    Solid é os 5 princípios da POO que facilitam no desenvolvimento de softwares, tornando-os faceis de manter.
+    S - Single Responsability Principle - Principio da responsabilidade única.
+    O - Open - Closed Principle - Principio aberto e fechado.
+    L - Liskov Substitution Principle - Principio da substituição de Liskov.
+    I - interface Segregation Principle - Principio da segregação de interface.
+    D - Dependency Inversion Principle - Principio da inversão de dependencia.
+
+Quais princípios foram utilizados no projeto até o momento? Explique.
+
+    Usamos o Single Responsability Principle, onde definimos cada classe com sua responsabilidade. Outro principio
+    utilizado no projeto foi o Dependency Inversion Principle, nas classes repository e controller.
+
+---
+
+## 3.10. Desafio 10
+<a name="Desafio-10"></a>
+
+O que você entende por Spring Framework?
+
+    Spring é um ecossistema de desenvolvimento que facilita a criação de projetos Java utilizando módulos
+    independentes. O foco do Spring é o desenvolvimento e não os processos de configuração.
+
+Cite 3 exemplos de ferramentas Spring e suas respectivas finalidades;
+
+    Spring Data - módulo que facilita o acesso aos dados.
+
+    Spring Security - é responsável por gerenciar toda a parte de autenticação e as autorizações do projeto.
+
+    Spring Boot - Projeto mais popular. É a versão opinativa do Spring Framework.
+
+Quais ferramentas do Spring foram utilizadas na trilha até o momento?
+
+    Spring Data, Spring Boot, Spring MVC.
+
+Cite 5 vantagens em utilizar Spring;
+
+    1. Facilidade de desenvolvimento
+    2. Implementações com menos código.
+    3. Facilidade de manutenção.
+    4. Redução de tempo de desenvolvimento.
+    5. Facilidade nas configurações iniciais do projeto.
+
+Descreva os passos de criação de uma Web API Spring boot, com conexão com
+SQL Server;
+
+    Para criar uma Web API Spring boot com conexão SQL Server é preciso entrar no site Spring Initializer,
+    adicionar as dependências Spring Web e MS SQL Server Driver.
+
+Qual a funcionalidade do pom.xml?
+
+    O pom.xml é um dos arquivos mais importantes do projeto, onde ele descreve uma série de configurações
+    que o projeto terá e quais repositórios e dependências seu projeto irá precisar.
+
+Qual a funcionalidades do applications.properties?
+
+    applications.properties tem por finalidade conter as informações importantes do projeto. Esse arquivo
+    deve ser bem estruturado para que todos possam manter ou administrar. Neste arquivo pode conter informações
+    de conectividade de banco de dados, porta utilizada, e conexão com servidor.
+
+Qual o propósito das Annotations?
+
+    É um recurso que permite embutir informações complementares no código fonte. Elas devem ser declaradas antes
+    do objeto, sempre deve preceder um @.
+
+Cite 10 annotations, com suas respectivas finalidades e descreva ou desenhe um
+cenário exemplificando a sua utilização;
+
+    1. @Override - especifica que um método sobrescreve outro método da superclasse.
+    2. @Test - especifica que é um método teste.
+    3. @Deprecated - Indica que o elemento (Classe, método ou campo) está absoleto e foi substituido por um elemento
+    mais novo.
+    4. @SuppressWarnings - Diz ao compilador ignorar "warnings" específicos que poderiam ser gerados.
+    5. @Configuration - Especifica que a classe atuará como configuração.
+    6. @Controller - especifica que a classe atuará como uma controlador em projetos MVC.
+    7. @Service - especifica que a classe atuará como serviço em projetos MVC.
+    8. @Repository - especifica que a classe terá acesso ao banco de dados e incluirá as lógicas de acesso a dados.
+    9. @RequestBody - está anotação pode converter dados HTTP de entrada em objetos passando para o método controlador
+    10. @PathVariable - está anotação é utilizada para recuperar dados da URL.
+
+O que é um advice em Spring? Quais os tipos de advice para o Spring?
+
+    É a ação executada pelo aspecto em um join point particular. Está ação pode executar antes, depois ou mesmo
+    envolver o join point para decidir se o mesmo deve realmente ser executado.
+
+    1. Before - Advice que executa antes do join point, mas não tem poder de evitar que o join point execute.
+    2. After returning - Advice que executa após o join point se terminar com sucesso.
+    3. After Throwing - Advice que executa após o join point quando ele finaliza enviando uma exceção.
+    4. After (finally) - Advice que executa após o join point independentemente do seu retorno.
+    5. Aroung - Advice que envolve a execução de um join point. Este é o tipo mais poderoso, pois pode realizar ações
+    antes e depois da execução do join point.
+
+O que é Spring IoC Container?
+
+    O Spring IoC Container é responsável por criar os objetos, conectar e configurar, além de gerenciar seu ciclo
+    de vida, desde a criação até a destruição.
+
+Como adicionamos segurança à nossa aplicação Spring?
+
+    É possível adicionamos segurança através do Spring Security, através de suas bibliotecas fornece proteção,
+    autenticação, autorização e armazenamento de senhas.
+
+Qual é o pacote Spring responsável pelas conexões com os bancos de dados?
+
+    O pacote responsável pela conexão é o Application.properties.
+
+Explique e exemplifique como criar um agendamento de execução de métodos Spring; Cite exemplos de usabilidade
+
+    O agendamento de execução de métodos pode ser utilizado através da anotação @Scheduled. Para habilitar o
+    agendamento, a classe deverá estar utilizando as anotações @component e @enableScheduled.
+    O agendamento de métodos pode ser utilizado quando por exemplo um cliente quer ver diariamente as vendas do dia.

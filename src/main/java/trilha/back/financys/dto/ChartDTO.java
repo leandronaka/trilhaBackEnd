@@ -1,8 +1,5 @@
 package trilha.back.financys.dto;
 
-import trilha.back.financys.entities.Entry;
-import trilha.back.financys.enums.TypeEnum;
-
 import java.io.Serializable;
 
 public class ChartDTO implements Serializable {
