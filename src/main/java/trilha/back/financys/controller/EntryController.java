@@ -1,59 +1,47 @@
 package trilha.back.financys.controller;
 
-import org.apache.velocity.exception.ResourceNotFoundException;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import trilha.back.financys.dto.ChartDTO;
 import trilha.back.financys.entities.Entry;
-import trilha.back.financys.repository.EntryRepository;
 import trilha.back.financys.services.EntryService;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/lancamentos")
 public class EntryController {
 
     @Autowired
-    private EntryRepository entryRepository;
-
-    @Autowired
     private EntryService entryService;
 
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<List<Entry>> read(){
-        return ResponseEntity.ok(entryRepository.findAll());
+        return ResponseEntity.ok(entryService.listarTodos());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Entry> findById(@PathVariable long id) {
-        return ResponseEntity.ok(entryRepository.findById(id));
+    @GetMapping("/listaId/{id}")
+    public ResponseEntity<Optional<Entry>> findById(@PathVariable long id) {
+        return ResponseEntity.ok(entryService.findById(id));
     }
 
-    @PostMapping
-    public ResponseEntity<Entry> create (@RequestBody Entry entry){
-        if (entryService.validateCategoryById(entry.getCategoryId().getId()) ==  true){
-            entry = entryService.salvar(entry);
-            return ResponseEntity.ok().body(entry);
-        } else throw new ResourceNotFoundException("Categoria não encontrada!");
+    @PostMapping("/salvar")
+    public ResponseEntity<Entry> create (@RequestBody @Valid Entry entry){
+        return ResponseEntity.ok(entryService.salvar(entry));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable long id){
-        entryRepository.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    @DeleteMapping("/deletar/{id}")
+    public void delete(@PathVariable Long id){
+        entryService.deletar(id);
+        ResponseEntity.ok().build();
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Entry> update(@PathVariable long id, @RequestBody Entry entry){
-        if (entryService.validateCategoryById(entry.getCategoryId().getId()) ==  true ){
-            Entry entryAux = entryRepository.findById(id);
-            BeanUtils.copyProperties(entry, entryAux, "id");
-            return new ResponseEntity<>(entryRepository.save(entryAux), HttpStatus.OK);
-        } else throw new ResourceNotFoundException("Categoria não encontrada!");
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<Entry> update(@PathVariable Long id, @RequestBody Entry entry){
+        return ResponseEntity.ok(entryService.atualizar(id, entry));
     }
 
     @GetMapping("/dto")

@@ -1,18 +1,20 @@
 package trilha.back.financys.services;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import trilha.back.financys.dto.ChartDTO;
 import trilha.back.financys.entities.Category;
 import trilha.back.financys.entities.Entry;
 import trilha.back.financys.exception.DivideByZeroException;
+import trilha.back.financys.exception.IdNotFound;
 import trilha.back.financys.repository.CategoryRepository;
 import trilha.back.financys.repository.EntryRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Optional;
 
 @Service
 public class EntryService {
@@ -34,30 +36,55 @@ public class EntryService {
         return false;
     }
 
+    public List<Entry> listarTodos() {
+        return entryRepository.findAll();
+    }
+
+    public Optional<Entry> findById(long id) {
+        return entryRepository.findById(id);
+    }
+
     public Entry salvar(Entry entry) {
-        entry.setId(ThreadLocalRandom.current().nextLong(1, 10000));
-        return entryRepository.save(entry);
+        if (validateCategoryById(entry.getCategoryId().getId()) == true){
+            return entryRepository.save(entry);
+        } else throw new IdNotFound("Id não encontrado");
+    }
+
+    public void deletar(long id) {
+        try {
+            entryRepository.deleteById(id);
+        } catch (RuntimeException e){
+            throw new IdNotFound("ID não encontrado!");
+        }
+    }
+
+    public Entry atualizar(long id, Entry entry){
+        try {
+            Entry entryAux = entryRepository.findById(id).get();
+            BeanUtils.copyProperties(entry, entryAux, "id");
+            return entryRepository.save(entryAux);
+        } catch (RuntimeException e){
+            throw new IdNotFound("ID não encontrado!");
+        }
     }
 
     public List<ChartDTO> listByCategory() {
-        List<Category> category = new ArrayList<Category>();
-        category = categoryRepository.findAll();
-        List<ChartDTO> chartDTO = new ArrayList<ChartDTO>();
+        List<Entry> entry = entryRepository.findAll();
+        List<ChartDTO> chartDTO = new ArrayList<>();
+        ChartDTO dto = new ChartDTO();
+        double total = 0;
 
-        for (Category objCategory : category) {
-            List<Entry> entry = entryRepository.findAll();
-            double total = 0;
-            ChartDTO dto = new ChartDTO();
-            dto.setName(objCategory.getName());
+        for (Entry objEntry : entry) {
+            dto.setName(objEntry.getName());
 
-            for (Entry objEntry : entry) {
-                if (objEntry.getCategoryId().getId() == objCategory.getId()) {
-                    total += objEntry.getAmount();
-                }
+            if (dto.getName().equals(objEntry.getName())) {
+                total += objEntry.getAmount();
             }
-            dto.setAmount(total);
-            chartDTO.add(dto);
         }
+
+        dto.setAmount(total);
+        chartDTO.add(dto);
+
         return chartDTO;
     }
 

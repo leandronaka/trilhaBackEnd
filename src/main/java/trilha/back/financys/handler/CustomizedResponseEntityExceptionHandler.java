@@ -9,6 +9,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import trilha.back.financys.exception.DivideByZeroException;
 import trilha.back.financys.exception.ExceptionResponse;
+import trilha.back.financys.exception.IdNotFound;
 
 import java.util.Date;
 
@@ -18,6 +19,16 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
     @ExceptionHandler(DivideByZeroException.class)
     public final ResponseEntity<ExceptionResponse> handlerDivideByZeroException(Exception ex, WebRequest request){
+        ExceptionResponse exceptionResponse =
+                new ExceptionResponse (
+                        new Date(),
+                        ex.getMessage(),
+                        request.getDescription(false));
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(IdNotFound.class)
+    public final ResponseEntity<ExceptionResponse> handlerIdNotFoundException(Exception ex, WebRequest request){
         ExceptionResponse exceptionResponse =
                 new ExceptionResponse (
                         new Date(),

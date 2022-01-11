@@ -1,52 +1,46 @@
 package trilha.back.financys.controller;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import trilha.back.financys.entities.Category;
-import trilha.back.financys.repository.CategoryRepository;
+import trilha.back.financys.services.CategoryService;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
 @RequestMapping("/categorias")
 public class CategoryController {
 
     @Autowired
-    private CategoryRepository categoryRepository;
+    private CategoryService categoryService;
 
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<List<Category>> read(){
-        return ResponseEntity.ok(categoryRepository.findAll());
+        return ResponseEntity.ok(categoryService.listarTodos());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/listaId/{id}")
     public ResponseEntity<Optional<Category>> findById(@PathVariable long id) {
-        return ResponseEntity.ok(categoryRepository.findById(id));
+        return ResponseEntity.ok(categoryService.findById(id));
     }
 
-    @PostMapping
+    @PostMapping("/salvar")
     public ResponseEntity<Category> create (@RequestBody @Valid Category category){
-        category.setId(ThreadLocalRandom.current().nextLong(0,10000));
-        return new ResponseEntity<>(categoryRepository.save(category), HttpStatus.OK);
+        return ResponseEntity.ok(categoryService.salvar(category));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
-        categoryRepository.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    @DeleteMapping("/deletar/{id}")
+    public void delete(@PathVariable Long id){
+        categoryService.deletar(id);
+        ResponseEntity.ok().build();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/atualizar/{id}")
     public ResponseEntity<Category> update(@PathVariable Long id, @RequestBody Category category){
-        Category categoryAux = categoryRepository.findById(id).get();
-        BeanUtils.copyProperties(category, categoryAux, "id");
-        return new ResponseEntity<>(categoryRepository.save(categoryAux), HttpStatus.OK);
+        return ResponseEntity.ok(categoryService.atualizar(id, category));
     }
 }
 
