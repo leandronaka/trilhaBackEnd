@@ -115,11 +115,14 @@ public class EntryService {
         return entry;
     }
 
-    public Integer calculaMedia(Integer x, Integer y) {
+    public Integer calculaMedia(Integer x, Integer y) throws DivideByZeroException {
         try {
-            return (x / y);
-        } catch (ArithmeticException e) {
-            throw new DivideByZeroException("Não pode dividir por 0!");
+            if(x.equals(0) || y.equals(0)){
+                throw new DivideByZeroException("Não pode dividir por 0!");
+            }
+        } catch (DivideByZeroException e) {
+            e.printStackTrace();
         }
+        return (x / y);
     }
 }
