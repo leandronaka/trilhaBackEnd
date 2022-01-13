@@ -14,6 +14,7 @@
     7. [Desafio 8](#Desafio-8)
     8. [Desafio 9](#Desafio-9)
     9. [Desafio 10](#Desafio-10)
+    10. [Desafio 11](#Desafio-11)
 ---
 
 ## 1. Descrição 
@@ -36,7 +37,7 @@ Diretório criado para a Trilha Back End Java 2021.
 - [X] Desafio 8 - Exception
 - [X] Desafio 9 - Patterns
 - [X] Desafio 10 - Spring
-- [ ] Desafio 11 - Libs
+- [X] Desafio 11 - Libs
 - [ ] Desafio 12 - Testes
 - [ ] Desafio 13 - Integration
 - [ ] Desafio 14 - Desafio Final
@@ -415,3 +416,47 @@ Explique e exemplifique como criar um agendamento de execução de métodos Spri
     O agendamento de execução de métodos pode ser utilizado através da anotação @Scheduled. Para habilitar o
     agendamento, a classe deverá estar utilizando as anotações @component e @enableScheduled.
     O agendamento de métodos pode ser utilizado quando por exemplo um cliente quer ver diariamente as vendas do dia.
+
+---
+
+## 3.11. Desafio 11
+<a name="Desafio-11"></a>
+
+O que são libs quando se trata de código?
+
+    Lib é um conjunto de funcionalidades que podem ser reaproveitadas pelos outros projetos.
+
+Cite 2 libs populares no Java e seu objetivo;
+
+    1. Jackson - É uma lib rápida, leve e fácil de utilizar. É considerada uma das melhores bibliotecas de JSON.
+    2. JUnit - é uma lib com objeto em testes, testes são feitos para validar uma unidade ou módulo específico.
+
+Qual é o propósito do Maven, e qual é o seu relacionamento com o arquivo
+pom.xml?
+
+    O Maven tem por objetivo o gerenciamento e automação de construção de projetos. As funções são adicionadas
+    através do uso de plugins, estimulando melhores práticas. O arquivo pom.xml contém todas as configurações que o
+    Maven precisa para interagir com o projeto.
+
+Qual é a diferença do Maven para o Grandle?
+
+    Os scripts do Maven é escrito em XML, já do Gradle é escrito em Groovy. Os scripts do do Grale são mais limpos
+    e curtos. O Maven é uma ferramenta de gerenciamento e compreensão de projetos, já o Gradle é um sistema de
+    automação.
+
+Com os conhecimentos adquiridos até o agora, realize uma conexão com o
+desafio 3 onde falamos sobre JDBC, os drivers de comunicação com os bancos de
+dados.
+I. Qual a relação entre os termos lib, driver e JDBC?
+
+    JDBC contém os drivers dos bancos de dados, os drivers podem ser adicionador nas libs criadas.
+
+II. Como é adicionado uma lib no projeto?
+
+    Entrar na estrutura do projeto e bibliotecas.
+
+III. Escolha um banco de dados (menos o H2) e explique como utilizar o driver de
+comunicação.
+
+    Foi utilizado o BD postgres e para utilizar o banco de dados, todas as configurações foram feitas no arquivos
+    application.properties.
