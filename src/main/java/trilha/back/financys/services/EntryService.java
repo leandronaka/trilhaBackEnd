@@ -5,16 +5,19 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import trilha.back.financys.dto.ChartDTO;
-import trilha.back.financys.entities.Category;
 import trilha.back.financys.entities.Entry;
 import trilha.back.financys.exception.DivideByZeroException;
 import trilha.back.financys.exception.IdNotFound;
+import trilha.back.financys.exception.ParameterNotFound;
+import trilha.back.financys.exception.WrongParameter;
 import trilha.back.financys.repository.CategoryRepository;
 import trilha.back.financys.repository.EntryRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class EntryService {
@@ -27,9 +30,10 @@ public class EntryService {
 
     @Autowired
     private ModelMapper modelMapper;
+
     private Object EntryDTO;
 
-    public boolean validateCategoryById(long categoryId) {
+    public boolean validateCategoryById(Long categoryId) {
         if (categoryRepository.existsById(categoryId)) {
             return true;
         }
@@ -40,30 +44,30 @@ public class EntryService {
         return entryRepository.findAll();
     }
 
-    public Optional<Entry> findById(long id) {
+    public Optional<Entry> findById(Long id) {
         return entryRepository.findById(id);
     }
 
     public Entry salvar(Entry entry) {
-        if (validateCategoryById(entry.getCategoryId().getId()) == true){
+        if (validateCategoryById(entry.getCategoryId().getId()) == true) {
             return entryRepository.save(entry);
         } else throw new IdNotFound("Id não encontrado");
     }
 
-    public void deletar(long id) {
+    public void deletar(Long id) {
         try {
             entryRepository.deleteById(id);
-        } catch (RuntimeException e){
+        } catch (RuntimeException e) {
             throw new IdNotFound("ID não encontrado!");
         }
     }
 
-    public Entry atualizar(long id, Entry entry){
+    public Entry atualizar(Long id, Entry entry) {
         try {
             Entry entryAux = entryRepository.findById(id).get();
             BeanUtils.copyProperties(entry, entryAux, "id");
             return entryRepository.save(entryAux);
-        } catch (RuntimeException e){
+        } catch (RuntimeException e) {
             throw new IdNotFound("ID não encontrado!");
         }
     }
@@ -117,12 +121,33 @@ public class EntryService {
 
     public Integer calculaMedia(Integer x, Integer y) throws DivideByZeroException {
         try {
-            if(x.equals(0) || y.equals(0)){
+            if ((x.equals(0)) || (y.equals(0))) {
                 throw new DivideByZeroException("Não pode dividir por 0!");
             }
         } catch (DivideByZeroException e) {
             e.printStackTrace();
         }
         return (x / y);
+    }
+
+    public List<Entry> getLancamentosDependentes(String data, String amount, Boolean paid) throws ParameterNotFound {
+        List<Entry> listEntry = entryRepository.findAll();
+        List<Entry> listAux = new ArrayList<>();
+
+        if ((data == null) || (amount == null) || (paid == null)) {
+            throw new WrongParameter("Parâmetros com valores errados");
+        } else {
+            listAux = listEntry.stream()
+                    .filter(item -> item.getDate().equals(data))
+                    .filter(item -> item.getAmount() == (Double.parseDouble(amount)))
+                    .filter(item -> item.getPaid() == paid)
+                    .collect(Collectors.toList());
+
+            if (listAux.isEmpty()){
+                throw new ParameterNotFound("Não existe os dados pelo parâmetro passado");
+            } else {
+                return listAux;
+            }
+        }
     }
 }

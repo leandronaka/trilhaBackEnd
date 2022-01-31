@@ -16,7 +16,7 @@ public class Entry implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank(message = "O nome não pode ser nulo ou vazio!")
     @Length(min = 3, max = 45, message = "O nome deverá ter no mínimo {min} e máximo {max} caracteres")
@@ -51,7 +51,7 @@ public class Entry implements Serializable {
     public Entry() {
     }
 
-    public Entry(long id, String name, String description, TypeEnum type,
+    public Entry(Long id, String name, String description, TypeEnum type,
                  double amount, String date, boolean paid, Category categoryId) {
         this.id = id;
         this.name = name;
@@ -63,11 +63,11 @@ public class Entry implements Serializable {
         this.categoryId = categoryId;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -111,11 +111,15 @@ public class Entry implements Serializable {
         this.date = date;
     }
 
+    public Boolean getPaid() {
+        return paid;
+    }
+
     public boolean isPaid() {
         return paid;
     }
 
-    public void setPaid(boolean paid) {
+    public void setPaid(Boolean paid) {
         this.paid = paid;
     }
 

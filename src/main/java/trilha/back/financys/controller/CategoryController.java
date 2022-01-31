@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import trilha.back.financys.entities.Category;
 import trilha.back.financys.services.CategoryService;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +27,7 @@ public class CategoryController {
     }
 
     @PostMapping("/salvar")
-    public ResponseEntity<Category> create (@RequestBody @Valid Category category){
+    public ResponseEntity<Category> create (@RequestBody Category category){
         return ResponseEntity.ok(categoryService.salvar(category));
     }
 

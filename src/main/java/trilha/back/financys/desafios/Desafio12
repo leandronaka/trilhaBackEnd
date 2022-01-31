@@ -1,0 +1,29 @@
+Explique o conceito de teste unitário?
+
+    Teste unitários é uma modalidade de teste que se concentra na verificação dos métodos do projeto. É realizado
+    o teste dos métodos, com uso de dados suficientes para se testar apenas a lógica do método.
+
+Descreva como fazer um código de teste.
+
+    Escrever um código de teste consiste em utilizar alguns métodos, criando cenários para identificar se o
+    método corresponde ao esperado.
+
+Qual o intuito do teste unitário?
+
+    Identificar bugs, garantir a qualidade final do código.
+
+Quais são as ferramentas que utilizamos para realizar testes unitários(2 pelo
+menos)
+
+    JUnit e Mockito.
+
+    ---------------------------------------------------------------------------------
+    | Texto Stack Trace                     |                 Explicação            |
+    ---------------------------------------------------------------------------------
+trilha.back.financys.exception.ParameterNotFound: Não existe os dados pelo parâmetro passado.
+Quando os dados não são encontrados no filtro ou a lista está vazia.
+
+trilha.back.financys.exception.WrongParameter: Parâmetros com valores errados.
+Quado os dados são nulos ou diferentes.
+
+java.lang.NullPointerException. Quando o dado é nulo

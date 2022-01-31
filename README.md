@@ -15,6 +15,7 @@
     8. [Desafio 9](#Desafio-9)
     9. [Desafio 10](#Desafio-10)
     10. [Desafio 11](#Desafio-11)
+    11. [Desafio 12](#Desafio-12)
 ---
 
 ## 1. Descrição 
@@ -38,7 +39,7 @@ Diretório criado para a Trilha Back End Java 2021.
 - [X] Desafio 9 - Patterns
 - [X] Desafio 10 - Spring
 - [X] Desafio 11 - Libs
-- [ ] Desafio 12 - Testes
+- [X] Desafio 12 - Testes
 - [ ] Desafio 13 - Integration
 - [ ] Desafio 14 - Desafio Final
 
@@ -460,3 +461,27 @@ comunicação.
 
     Foi utilizado o BD postgres e para utilizar o banco de dados, todas as configurações foram feitas no arquivos
     application.properties.
+
+---
+
+## 3.12. Desafio 12
+<a name="Desafio-12"></a>
+
+Explique o conceito de teste unitário?
+
+    Teste unitários é uma modalidade de teste que se concentra na verificação dos métodos do projeto. É realizado
+    o teste dos métodos, com uso de dados suficientes para se testar apenas a lógica do método.
+
+Descreva como fazer um código de teste.
+
+    Escrever um código de teste consiste em utilizar alguns métodos, criando cenários para identificar se o
+    método corresponde ao esperado.
+
+Qual o intuito do teste unitário?
+
+    Identificar bugs, garantir a qualidade final do código.
+
+Quais são as ferramentas que utilizamos para realizar testes unitários(2 pelo
+menos)
+
+    JUnit e Mockito.

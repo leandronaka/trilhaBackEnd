@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import trilha.back.financys.exception.DivideByZeroException;
-import trilha.back.financys.exception.ExceptionResponse;
-import trilha.back.financys.exception.IdNotFound;
+import trilha.back.financys.exception.*;
 
 import java.util.Date;
 
@@ -35,5 +33,25 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
                         ex.getMessage(),
                         request.getDescription(false));
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(WrongParameter.class)
+    public final ResponseEntity<ExceptionResponse> handlerWrongParameter(Exception ex, WebRequest request){
+        ExceptionResponse exceptionResponse =
+                new ExceptionResponse (
+                        new Date(),
+                        ex.getMessage(),
+                        request.getDescription(false));
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ParameterNotFound.class)
+    public final ResponseEntity<ExceptionResponse> handlerParameterNotFound(Exception ex, WebRequest request){
+        ExceptionResponse exceptionResponse =
+                new ExceptionResponse (
+                        new Date(),
+                        ex.getMessage(),
+                        request.getDescription(false));
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.NO_CONTENT);
     }
 }

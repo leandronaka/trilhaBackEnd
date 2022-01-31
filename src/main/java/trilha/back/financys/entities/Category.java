@@ -1,6 +1,7 @@
 package trilha.back.financys.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;

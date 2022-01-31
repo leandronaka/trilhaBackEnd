@@ -34,7 +34,7 @@ public class FinancysApplication {
 
 		// utilizando o Construtor Padrão
 		Entry entry = new Entry();
-		entry.setId(2);
+		entry.setId(2L);
 		entry.setName("Salário Empresa X");
 		entry.setDescription("Adiantamento Quinzenal");
 		entry.setType(TypeEnum.REVENUE);
@@ -46,7 +46,7 @@ public class FinancysApplication {
 		System.out.println(entry.toString());
 
 		System.out.println("Utilizando o Construtor Completo: ");
-		Entry entryCompleto = new Entry(3,"Salario Empresa Y", "Adiantamento Quinzenal",
+		Entry entryCompleto = new Entry(3L,"Salario Empresa Y", "Adiantamento Quinzenal",
 				TypeEnum.REVENUE, 5050.50, "21/11/2021", true, categoryCompleto);
 		System.out.println(entryCompleto.toString());
 	}
