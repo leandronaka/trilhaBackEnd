@@ -120,12 +120,9 @@ public class EntryService {
     }
 
     public Integer calculaMedia(Integer x, Integer y) throws DivideByZeroException {
-        try {
-            if ((x.equals(0)) || (y.equals(0))) {
-                throw new DivideByZeroException("Não pode dividir por 0!");
-            }
-        } catch (DivideByZeroException e) {
-            e.printStackTrace();
+
+        if ((x.equals(0)) || (y.equals(0))) {
+            throw new DivideByZeroException("Não pode dividir por 0!");
         }
         return (x / y);
     }

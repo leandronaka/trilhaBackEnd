@@ -10,6 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import trilha.back.financys.entities.Category;
 import trilha.back.financys.entities.Entry;
 import trilha.back.financys.enums.TypeEnum;
+import trilha.back.financys.exception.DivideByZeroException;
 import trilha.back.financys.exception.ParameterNotFound;
 import trilha.back.financys.exception.WrongParameter;
 import trilha.back.financys.repository.EntryRepository;
@@ -83,6 +84,16 @@ public class TrilhaBackTestes {
     public void testeCalculo(){
         int result = entryService.calculaMedia(10,2);
         Assert.assertEquals(5, result);
+    }
+
+    @Test
+    public void teste2(){
+        Throwable exception = Assert.assertThrows(DivideByZeroException.class, () -> {
+            entryService.calculaMedia(0,5);
+        });
+        //3- Testar o se o resultado é o resultado esperado
+        Assert.assertEquals("Não pode dividir por 0!", exception.getMessage());
+        exception.printStackTrace();
     }
 }
 
