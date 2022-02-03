@@ -5,6 +5,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import trilha.back.financys.dto.ChartDTO;
+import trilha.back.financys.dto.EntryCustomDTO;
 import trilha.back.financys.entities.Entry;
 import trilha.back.financys.exception.DivideByZeroException;
 import trilha.back.financys.exception.IdNotFound;
@@ -15,7 +16,6 @@ import trilha.back.financys.repository.EntryRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -48,10 +48,17 @@ public class EntryService {
         return entryRepository.findById(id);
     }
 
-    public Entry salvar(Entry entry) {
-        if (validateCategoryById(entry.getCategoryId().getId()) == true) {
-            return entryRepository.save(entry);
-        } else throw new IdNotFound("Id não encontrado");
+    public Optional<Entry> findByName(String name) {
+        return entryRepository.findByName(name);
+    }
+
+//    public Entry salvar(Entry entry) {
+//        return entryRepository.save(entry);
+//    }
+
+    public Entry salvar(EntryCustomDTO body) {
+        body.setCategoryId(categoryRepository.findByName(body.getCategoryName()).get());
+        return entryRepository.save(mapToEntity(body));
     }
 
     public void deletar(Long id) {
@@ -62,10 +69,11 @@ public class EntryService {
         }
     }
 
-    public Entry atualizar(Long id, Entry entry) {
+    public Entry atualizar(Long id, EntryCustomDTO body) {
         try {
+            body.setCategoryId(categoryRepository.findByName(body.getCategoryName()).get());
             Entry entryAux = entryRepository.findById(id).get();
-            BeanUtils.copyProperties(entry, entryAux, "id");
+            BeanUtils.copyProperties(body, entryAux, "id");
             return entryRepository.save(entryAux);
         } catch (RuntimeException e) {
             throw new IdNotFound("ID não encontrado!");
@@ -114,8 +122,13 @@ public class EntryService {
         return chartDTO;
     }
 
-    private Entry mapToEntity(ChartDTO chartDTO) {
+    private Entry mapToChart(ChartDTO chartDTO) {
         Entry entry = modelMapper.map(chartDTO, Entry.class);
+        return entry;
+    }
+
+    private Entry mapToEntity(EntryCustomDTO entryCustomDTO) {
+        Entry entry = modelMapper.map(entryCustomDTO, Entry.class);
         return entry;
     }
 

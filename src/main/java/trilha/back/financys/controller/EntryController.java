@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import trilha.back.financys.dto.ChartDTO;
+import trilha.back.financys.dto.EntryCustomDTO;
 import trilha.back.financys.entities.Entry;
 import trilha.back.financys.services.EntryService;
 
@@ -18,29 +19,34 @@ public class EntryController {
     @Autowired
     private EntryService entryService;
 
-    @GetMapping("/listar")
+//    @GetMapping("/listar")
+    @GetMapping
     public ResponseEntity<List<Entry>> read(){
         return ResponseEntity.ok(entryService.listarTodos());
     }
 
-    @GetMapping("/listaId/{id}")
+//    @GetMapping("/listaId/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Optional<Entry>> findById(@PathVariable long id) {
         return ResponseEntity.ok(entryService.findById(id));
     }
 
-    @PostMapping("/salvar")
-    public ResponseEntity<Entry> create (@RequestBody @Valid Entry entry){
+//    @PostMapping("/salvar")
+    @PostMapping
+    public ResponseEntity<Entry> create (@RequestBody EntryCustomDTO entry){
         return ResponseEntity.ok(entryService.salvar(entry));
     }
 
-    @DeleteMapping("/deletar/{id}")
+//    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         entryService.deletar(id);
         ResponseEntity.ok().build();
     }
 
-    @PutMapping("/atualizar/{id}")
-    public ResponseEntity<Entry> update(@PathVariable Long id, @RequestBody Entry entry){
+//    @PutMapping("/atualizar/{id}")
+    @PutMapping("/{id}")
+    public ResponseEntity<Entry> update(@PathVariable Long id, @RequestBody EntryCustomDTO entry){
         return ResponseEntity.ok(entryService.atualizar(id, entry));
     }
 

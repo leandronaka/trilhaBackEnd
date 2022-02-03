@@ -46,6 +46,7 @@ public class Entry implements Serializable {
 
     public String getNameCategory(){
         return this.categoryId.getName();
+//        return categoryId;
     }
 
     public Entry() {

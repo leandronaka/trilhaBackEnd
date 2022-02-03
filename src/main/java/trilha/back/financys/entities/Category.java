@@ -28,7 +28,7 @@ public class Category implements Serializable {
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_Id")
+//    @JoinColumn(name = "category_Id")
     private List<Entry> entry;
 
     public Category() {

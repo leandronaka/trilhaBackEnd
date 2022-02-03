@@ -39,10 +39,11 @@ public class TrilhaBackTestes {
                 1l,
                 "nome",
                 "descricao",
-                TypeEnum.EXPENSE,
+                TypeEnum.revenue,
                 30.0,
                 "data",
                 true,
+//                "nome");
                 new Category(1l, "nome", "descricao"));
         listEntry.add(entry1);
         when(entryRepository.findAll()).thenReturn(listEntry);

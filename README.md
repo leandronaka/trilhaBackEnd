@@ -16,6 +16,7 @@
     9. [Desafio 10](#Desafio-10)
     10. [Desafio 11](#Desafio-11)
     11. [Desafio 12](#Desafio-12)
+    12. [Desafio 13](#Desafio-13)
 ---
 
 ## 1. Descrição 
@@ -609,3 +610,45 @@ traces de erros e explique em uma só frase qual o erro
     	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)
 
     	Explicação: O teste chama a service e o método não passa pelo if porque o parâmetro é 0.
+
+---
+
+## 3.12. Desafio 13
+<a name="Desafio-13"></a>
+
+Tire evidências das telas e testes mostrando a integração dos dois códigos e adicione no README.md
+
+      General
+      Request URL: http://localhost:8080/categorias
+      Request Method: GET
+      Status Code: 200
+      Remote Address: [::1]:8080
+      Referrer Policy: strict-origin-when-cross-origin
+
+      Response Headers
+      Access-Control-Allow-Origin: http://localhost:4200
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Thu, 03 Feb 2022 13:24:43 GMT
+      Keep-Alive: timeout=60
+      Transfer-Encoding: chunked
+      Vary: Origin
+      Vary: Access-Control-Request-Method
+      Vary: Access-Control-Request-Headers
+
+      Request Headers
+
+      Accept: application/json, text/plain, */*
+      Accept-Encoding: gzip, deflate, br
+      Accept-Language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7
+      Connection: keep-alive
+      Host: localhost:8080
+      Origin: http://localhost:4200
+      Referer: http://localhost:4200/
+      sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="98", "Google Chrome";v="98"
+      sec-ch-ua-mobile: ?0
+      sec-ch-ua-platform: "Windows"
+      Sec-Fetch-Dest: empty
+      Sec-Fetch-Mode: cors
+      Sec-Fetch-Site: same-site
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36
