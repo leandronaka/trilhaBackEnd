@@ -52,10 +52,6 @@ public class EntryService {
         return entryRepository.findByName(name);
     }
 
-//    public Entry salvar(Entry entry) {
-//        return entryRepository.save(entry);
-//    }
-
     public Entry salvar(EntryCustomDTO body) {
         body.setCategoryId(categoryRepository.findByName(body.getCategoryName()).get());
         return entryRepository.save(mapToEntity(body));
